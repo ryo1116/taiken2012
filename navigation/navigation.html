@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>スマホでナビ！</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="navigation.js"></script>
+<style type="text/css">
+  #map_destination {font-size:16px;}
+  #navi {font-size:14px;}
+</style>
+</head>
+<body>
+<!-- 目次ページ2 -->
+<section id="index" data-role="page">
+  <header data-role="header" data-position="fixed" data-theme="b"><h1>スマホでナビ！</h1></header>
+  <div class="content" data-role="content">
+    <!--  出発地  -->
+    <ul data-role="listview" data-inset="true">
+      <li data-role="list-divider">出発地</li>
+      <li><input type="search" id="start" name="start" value="神戸電子専門学校" /></li>
+    </ul>
+    <!--  目的地  -->
+    <ul data-role="listview" data-inset="true">
+      <li data-role="list-divider">目的地</li>
+      <li><input type="text" id="destination" name="destination" value="" placeholder="目的地（住所または地名）を入力" /></li>
+    </ul>
+    <div class="ui-grid-b">
+      <div class="ui-block-a"></div>
+      <div class="ui-block-b"><span id="navi"><a href="#map" data-role="button" align="center">Navi</a></span></div>
+      <div class="ui-block-c"></div>
+    </div>
+  </div>
+  <footer data-role="footer" data-position="fixed" data-theme="b" align="center">
+  <h1>神戸電子専門学校</h1>
+  </footer>
+</section>
+<!-- 地図 -->
+<section id="map" data-role="page">
+  <header data-role="header" data-position="fixed" data-theme="b">
+    <a href="#index" id="back_index" data-icon="arrow-l" data-direction="reverse">戻る</a>
+    <h1 id="map_destination"></h1>
+  </header>
+  <div class="content" data-role="content">
+    <div id="map_data" style="width:100%; height:410px; border:4px solid white"></div>
+  </div>
+</section>
+</body>
+</html>
