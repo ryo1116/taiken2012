@@ -5,7 +5,7 @@ $(function(){
     // 「ナビ」ボタン(リンク)がクリックされた場合
     $('#navi').live('click', function(){
         // 入力された地名・住所を取り出す
-        //①
+        dest_address = $('#destination').attr("value"); //①
         if(dest_address == "" || dest_address == null) dest_address = "神戸電子専門学校";
         destination = dest_address;
 
@@ -47,9 +47,9 @@ function getMap(address){
             	//     MapTypeId.TERRAIN - 地形情報に基づく物理的なマップタイルを表示
                 var myOptions = {
                     // 最初の地図の大きさを指定する　17ぐらいがベスト
-                    zoom:1,
+                    zoom:17,
                     // 地図の種類を指定する デフォルトは「ROADMAP」
-                    mapTypeId: google.maps.MapTypeId.TERRAIN, 
+                    mapTypeId: google.maps.MapTypeId.ROADMAP, 
                 };
 
             	// Mapオブジェクトを生成し、画面に表示する
@@ -63,11 +63,11 @@ function getMap(address){
                 // 地図上にマーカーを追加する
                 var marker = new google.maps.Marker({
                     // マーカーを表示する地図を指定する
-                    // ②
+                    map: map, // ②
                     // マーカーをアニメーション表示する
-                    // ③
+                    animation: google.maps.Animation.DROP, // ③
                     // マーカーの表示位置を指定する
-                    // ④
+                    position: results[0].geometry.location // ④
                 });
             } else {
                 // 住所から緯度・経度が算出できなかった場合
